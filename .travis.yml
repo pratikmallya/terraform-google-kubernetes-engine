@@ -10,7 +10,7 @@ before_install:
 sudo: required
 
 env:
-  - MAKE_TASK=test_integration_travis
+  - MAKE_TASK=test_integration
 
 script:
   - make $MAKE_TASK
