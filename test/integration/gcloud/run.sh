@@ -306,28 +306,28 @@ EOF
 
 # Install gems
 function bundle_install() {
-  bundle install
+  bundle install || exit 1
 }
 
 # Execute kitchen tests
 function run_kitchen() {
-  kitchen create
-  kitchen converge
-  kitchen converge # second time to enable network policy
-  kitchen verify
-  kitchen destroy
+  kitchen create || exit 1
+  kitchen converge || exit 1
+  kitchen converge || exit 1 # second time to enable network policy
+  kitchen verify || exit 1
+  kitchen destroy || exit 1
 }
 
 # Preparing environment
-make_testdir
+make_testdir || exit 1
 
-cd "${TEMPDIR}/${CLUSTER_TYPE}/" || exit
-activate_config
-export_vars zonal
-create_main_tf_file
-create_outputs_file
-bundle_install
-run_kitchen
+cd "${TEMPDIR}/${CLUSTER_TYPE}/" || exit 1
+activate_config || exit 1
+export_vars zonal || exit 1
+create_main_tf_file || exit 1
+create_outputs_file || exit 1
+bundle_install || exit 1
+run_kitchen || exit 1
 
 # # # Clean the environment
 cd - || exit
