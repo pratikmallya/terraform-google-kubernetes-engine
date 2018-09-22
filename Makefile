@@ -71,11 +71,11 @@ generate_docs:
 
 .PHONY: regional_test_integration
 regional_test_integration:
-	./test/integration/gcloud/run.sh regional
+	./test/integration/gcloud/run.sh regional || exit 1
 
 .PHONY: zonal_test_integration
 zonal_test_integration:
-	./test/integration/gcloud/run.sh zonal
+	./test/integration/gcloud/run.sh zonal || exit 1
 
 .PHONY: test_integration
 test_integration: regional_test_integration zonal_test_integration
