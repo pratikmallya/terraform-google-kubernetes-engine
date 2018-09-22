@@ -80,11 +80,3 @@ zonal_test_integration:
 .PHONY: test_integration
 test_integration: regional_test_integration zonal_test_integration
 	@echo "Running tests for regional and zonal clusters"
-
-.PHONY: travis_config_create
-config_create:
-	cp ./test/integration/gcloud/sample.sh ./test/integration/gcloud/config.sh
-
-.PHONY: test_integration_travis
-test_integration_travis: travis_config_create regional_test_integration zonal_test_integration
-	@echo "Running tests for regional and zonal clusters"
