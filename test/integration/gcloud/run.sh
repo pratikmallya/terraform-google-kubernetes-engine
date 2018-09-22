@@ -307,6 +307,7 @@ EOF
 # Install gems
 function bundle_install() {
   bundle install || exit 1
+  bundle exec kitchen list || exit 1
 }
 
 # Execute kitchen tests
